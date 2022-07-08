@@ -6,13 +6,22 @@
     box-sizing: border-box;
     scroll-behavior: smooth;
     font-family: Montserrat;
+    overflow-x: hidden;
 }
 
 a{
     text-decoration: none;
     color: gold;
 }
-
+#demo-simple-select{
+    font-family: Montserrat;
+}
+.MuiOutlinedInput-notchedOutline{
+    border-color: #fff !important;
+}
+.MuiSvgIcon-root{
+    color: #fff !important;
+}
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
