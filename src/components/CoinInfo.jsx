@@ -28,7 +28,7 @@ const CoinInfo = () => {
             <CircularProgress />
           ):(
             <Line data={{
-              labels:{}
+              labels:historicalData.map(())
             }} />
           )
         }
