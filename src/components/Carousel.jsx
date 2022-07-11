@@ -18,9 +18,9 @@ const Carousel = () => {
     const { data } = await axios.get(TrendingCoins(currency));
     setTrending(data);
   };
-  // useEffect(() => {
-  //   fetchTrendingCoins();
-  // }, [currency]);
+  useEffect(() => {
+    fetchTrendingCoins();
+  }, [currency]);
 
   // number of carousel image s to be shown on the screen
   const responsive = { 0: { items: 2 }, 512: { items: 4 } };
@@ -28,7 +28,7 @@ const Carousel = () => {
   const items = trending.map((coin) => {
    
     return (
-      <Link to={`/coins/${coin.id}`} className='grid place-items-center' >
+      <Link to={`/coins/${coin.id}`} className='grid  place-items-center w-fit' >
         <img src={coin?.image} className="h-[80px] mb-3" alt={coin.name} />
         <span>
           {coin?.symbol} &nbsp;
@@ -50,10 +50,8 @@ const Carousel = () => {
     );
   });
 
-  console.log(trending);
-
   return (
-    <div className="h-1/2 flex items-center">
+    <div className="w-3/4 flex items-center mx-auto">
       <AliceCarousel
          mouseTracking
         infinite

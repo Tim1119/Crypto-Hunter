@@ -5,22 +5,15 @@ import { Crypto } from "../CryptoContext";
 import MenuItem from '@mui/material/MenuItem';
 import Select from '@mui/material/Select';
 
-
-
-
-
 const Header = () => {
-  // const { currency, setCurrency } = useContext(Crypto);
-  const { currency, setCurrency } = CryptoState();
 
-  console.log(currency);
-  
+  const { currency, setCurrency } = CryptoState();
 
   return (
     <header className="static h-[60px] shadow-2xl  px-5">
       <div className="max-w-6xl mx-auto flex items-center justify-between h-full w-full">
         <Link to="/">
-          <div className="font-bold text-3xl cursor-pointer text-[#FFD700]">
+          <div className="font-bold text-xl md:text-3xl cursor-pointer text-[#FFD700]">
             <h1>Crypto Hunter</h1>
           </div>
         </Link>
