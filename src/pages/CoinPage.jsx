@@ -5,6 +5,7 @@ import axios from "axios";
 import { SingleCoin } from "../config/api";
 import CoinInfo from "../components/CoinInfo";
 import ReactHtmlParser from "react-html-parser";
+import { CircularProgress } from "@mui/material";
 
 export function numberWithCommas(x) {
   return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
@@ -21,12 +22,13 @@ const CoinPage = () => {
     setLoading(true);
     const { data } = await axios.get(SingleCoin(id));
     setCoin(data);
-    console.log(data)
+    console.log('fff',data)
     setLoading(false);
   };
 
   useEffect(() => {
     fetchCoin();
+    console.log('dddddd',coin)
   }, [currency]);
  
 
@@ -45,28 +47,19 @@ const CoinPage = () => {
         <div className="text-left w-full px-6">
           <span className="flex text-xl font-bold">
           Rank: {coin?.market_cap_rank.toLocaleString('en-US')}
-            {/* Rank:{numberWithCommas(coin?.market_cap_rank)} */}
           </span>
           <span className="flex text-xl font-bold">
             Current Price: {symbol}{" "}
             {coin?.market_data.current_price[currency.toLowerCase()].toLocaleString('en-US')}
-            {/* {numberWithCommas(
-              coin?.market_data.current_price[currency.toLowerCase()]
-            )} */}
           </span>
           <span className="flex text-xl font-bold">
             Mark. Cap: {symbol}{" "}
-            {coin?.market_data.market_cap[currency.toLowerCase()].toLocaleString('en-US')}
-            {/* {numberWithCommas(
-              coin?.market_data.market_cap[currency.toLowerCase()]
-                .toString()
-                .slice(0, -6)
-            )} */}
-            M
+            {coin?.market_data.market_cap[currency.toLowerCase()].toLocaleString('en-US')} M
           </span>
         </div>
       </div>
-      <CoinInfo coin={coin} className="md:basis-3/4 bg-rose-400" />
+      {coin ? (<CoinInfo coin={coin} className=" bg-blue-300 md:basis-3/4 " />) : <CircularProgress />}
+    
     </div>
   );
 };
